@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "bom-dia-react-native",
+    "slug": "bom-dia-react-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "bom-dia-react-native"
+}
