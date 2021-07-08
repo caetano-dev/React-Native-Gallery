@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { ImageList } from "./src/components/ImageList.js";
 import { Header } from "./src/components/Header.js";
 
