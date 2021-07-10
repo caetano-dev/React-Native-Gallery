@@ -1,10 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
+import { StyleSheet, View, Image, Text, ScrollView,Button } from "react-native";
 import { api } from "../data/Api";
 
-export function ImageList() {
+export function ImageList({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View >
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Image')}
+      />
       <ScrollView>
         {api.map((image) => (
           <View key={image.id} style={styles.imageContainer}>
@@ -18,9 +22,6 @@ export function ImageList() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
   imageContainer: {
     justifyContent: "center",
     alignItems: "center",
