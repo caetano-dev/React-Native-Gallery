@@ -1,38 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, ScrollView, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  FlatList,
+} from 'react-native';
 import { api } from '../data/Api';
+import { ImageItem } from './ImageItem';
 
 export function ImageList() {
-  const navigation = useNavigation();
+
+  const renderItem = ({ item }) => <ImageItem title={item.title} link={item.link} />;
 
   return (
-    <View>
+    <SafeAreaView>
       <ScrollView>
-        {api.map((image) => (
-          <View key={image.id} style={styles.imageContainer}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Image', { title: image.title, link: image.link })}
-              activeOpacity={0.8}
-            >
-              <Text style={styles.title}>{image.title}</Text>
-              <Image source={{ uri: image.link }} style={styles.image} />
-            </TouchableOpacity>
-          </View>
-        ))}
+        <FlatList data={api} renderItem={renderItem} keyExtractor={(item) => item.id} />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  imageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: { fontSize: 15 },
-  image: {
-    width: '100%',
-    aspectRatio: 1,
-  },
-});
