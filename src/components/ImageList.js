@@ -1,16 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, ScrollView, Button } from 'react-native';
+import { StyleSheet, View, Image, Text, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { api } from '../data/Api';
 
-export function ImageList({ navigation }) {
+export function ImageList() {
+  const navigation = useNavigation();
+
   return (
     <View>
-      <Button title="Go to Details" onPress={() => navigation.navigate('Image')} />
       <ScrollView>
         {api.map((image) => (
           <View key={image.id} style={styles.imageContainer}>
-            <Text style={styles.title}>{image.title}</Text>
-            <Image source={{ uri: image.link }} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Image', { title: image.title, link: image.link })}
+              activeOpacity={0.8}
+            >
+              <Text style={styles.title}>{image.title}</Text>
+              <Image source={{ uri: image.link }} style={styles.image} />
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
@@ -22,7 +29,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
   },
   title: { fontSize: 15 },
   image: {
