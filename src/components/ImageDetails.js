@@ -13,6 +13,11 @@ export function ImageDetails({ route }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   image: {
     width: '100%',
     aspectRatio: 1,
