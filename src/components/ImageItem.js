@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export function ImageItem({ title, link }) {
@@ -14,7 +8,7 @@ export function ImageItem({ title, link }) {
   return (
     <View style={styles.item}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Image', { title, link})}
+        onPress={() => navigation.navigate('Image', { title, link })}
         activeOpacity={0.8}
       >
         <Text style={styles.title}>{title}</Text>
@@ -28,6 +22,15 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
   },
-
-  image: { width: '100%', aspectRatio: 1 },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  image: {
+    width: '100%',
+    aspectRatio: 1,
+    paddingBottom: 8,
+    borderRadius: 8,
+  },
 });
